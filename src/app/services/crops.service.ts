@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { BehaviorSubject, tap } from 'rxjs';
-import { Crop } from '@models/farmer.modal';
+import { Crop } from '@models/crops.modal';
 
 @Injectable({
     providedIn: 'root',

@@ -1,4 +1,4 @@
-import { Farmer } from './crop.modal';
+import { Farmer } from './farmers.modal';
 
 export interface Admin {
     adminId: string;

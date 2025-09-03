@@ -1,5 +1,5 @@
 import { Admin } from './admin.modal';
-import { Crop } from './farmer.modal';
+import { Crop } from './crops.modal';
 
 export interface Farmer {
     farmerId: string;

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Farmer } from '@models/crop.modal';
+import { Farmer } from '@models/farmers.modal';
 import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
