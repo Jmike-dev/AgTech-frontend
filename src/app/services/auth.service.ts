@@ -24,6 +24,7 @@ export class AuthService {
                 tap((response) => {
                     if (response?.role) {
                         sessionStorage.setItem('role', response.role);
+                        sessionStorage.setItem('adminId', response.adminId);
                     }
                 }),
             );
@@ -36,6 +37,7 @@ export class AuthService {
                 tap((response) => {
                     if (response?.role) {
                         sessionStorage.setItem('role', response.role);
+                        sessionStorage.setItem('farmerId', response.farmerId);
                     }
                 }),
             );

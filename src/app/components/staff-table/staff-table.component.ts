@@ -38,11 +38,11 @@ export interface TableColumn<table = any> {
                                     {{ tableTitle.label }}
                                 </th>
                             }
-                            <th
+                            <!-- <th
                                 class="border-brand-text-light/20 rounded-tr-2xl border-b-2 px-6 py-3 text-left text-lg font-semibold tracking-wider uppercase backdrop-blur-3xl"
                             >
                                 view profile
-                            </th>
+                            </th> -->
                         </tr>
                     </thead>
                     <tbody
@@ -168,7 +168,7 @@ export interface TableColumn<table = any> {
                                             }
                                         </td>
                                     }
-                                    <td
+                                    <!-- <td
                                         class="rounded-r-2xl px-6 py-4 whitespace-nowrap"
                                     >
                                         <div class="w-3/4 p-4">
@@ -180,7 +180,7 @@ export interface TableColumn<table = any> {
                                                 [payload]="data"
                                             />
                                         </div>
-                                    </td>
+                                    </td> -->
                                 </tr>
                             }
                         }
