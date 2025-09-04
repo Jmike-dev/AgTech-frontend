@@ -1,27 +1,64 @@
 # AgTechFrontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+**AgTechFrontend** is a web-based administrative dashboard built with [Angular](https://angular.io/). This guide will help you set up and run the application locally.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🚀 Prerequisites
 
-## Code scaffolding
+Ensure you have the following installed on your machine:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- [Node.js](https://nodejs.org/) (v16 or higher recommended)
+- [Angular CLI](https://angular.io/cli)
+- [pnpm](https://pnpm.io) _(optional — alternative to npm)_
 
-## Build
+---
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🛠️ Setup
 
-## Running unit tests
+1. **Clone the repository** and navigate into the project directory:
+    ```bash
+    git clone <repository-url>
+    cd AgTech-Frontend
+    ```
+2. Install Angular CLI globally (if not already installed):
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm install -g @angular/cli
+```
 
-## Running end-to-end tests
+3. Install dependencies using your preferred package manager:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```
+npm install
+# or
+pnpm install
+```
 
-## Further help
+## ▶️ Running the Application
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Choose an environment to run the app:
+
+### ✅ Production
+
+This will use the live [API url](https://agtech-erp-production.up.railway.app/api)
+
+```bash
+npm run start:prod
+# or
+pnpm run start:prod
+```
+
+### ✅ local
+
+this will use [localurl](http://localhost:4000/api)
+
+```bash
+npm run start:develop
+# or
+pnpm run start:develop
+```
+
+```
+
+```
