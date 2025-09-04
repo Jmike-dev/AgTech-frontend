@@ -38,7 +38,20 @@ export const CropsStore = signalStore(
                 });
             }
         },
-
+        async fetchAllCropsAdmin(adminId: string) {
+            patchState(store, { loadingCrops: true });
+            try {
+                const crops = await firstValueFrom(
+                    cropsService.allCrops(adminId),
+                );
+                patchState(store, { crops, loadingCrops: false });
+            } catch (err: any) {
+                patchState(store, {
+                    error: err.error?.message || 'Failed to fetch crops',
+                    loadingCrops: false,
+                });
+            }
+        },
         async createCrop(data: Crop) {
             patchState(store, { loadingCrops: true });
             try {

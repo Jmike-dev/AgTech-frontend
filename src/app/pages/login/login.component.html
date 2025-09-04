@@ -1,1 +1,127 @@
-<p>login works!</p>
+<div class="flex w-full flex-col-reverse sm:flex-row-reverse">
+    <!-- form section -->
+    <div
+        class="flex w-full items-center justify-center p-8 sm:h-screen sm:w-1/2"
+    >
+        <!-- Loader bar -->
+        @if (loading()) {
+            <div class="fixed top-0 left-0 w-full">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        }
+
+        <!-- form input filled -->
+        <div class="flex w-full flex-col items-center justify-center gap-4">
+            <form
+                [formGroup]="loginForm"
+                (ngSubmit)="handleLogin()"
+                class="flex w-full flex-col items-center justify-center gap-4"
+            >
+                <!-- title -->
+                <section class="text-center">
+                    <h1 class="text-left text-3xl font-semibold">
+                        Welcome
+                        {{ loginMode() === "ADMIN" ? "Admin" : "Farmer" }}
+                    </h1>
+                    <h2 class="text-xl">
+                        {{
+                            loginMode() === "ADMIN"
+                                ? "Manage your farmers and system"
+                                : "Access your farming dashboard"
+                        }}
+                    </h2>
+                </section>
+
+                <!-- email -->
+                <div class="w-full sm:w-1/2">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <input
+                            matInput
+                            placeholder="Email"
+                            class="w-full"
+                            formControlName="email"
+                            required
+                        />
+                    </mat-form-field>
+                </div>
+
+                <!-- password -->
+                <div class="w-full sm:w-1/2">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <input
+                            matInput
+                            [type]="hidePassword() ? 'password' : 'text'"
+                            placeholder="Password"
+                            formControlName="password"
+                            required
+                        />
+                        <button
+                            mat-icon-button
+                            matSuffix
+                            type="button"
+                            (click)="hidePassword.set(!hidePassword())"
+                            [attr.aria-label]="'Toggle password visibility'"
+                            class="text-brand-secondary-light p-4"
+                        >
+                            <mat-icon>
+                                {{
+                                    hidePassword()
+                                        ? "visibility_off"
+                                        : "visibility"
+                                }}
+                            </mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+
+                <!-- submit -->
+                <div class="w-full sm:w-1/2">
+                    <med-button
+                        [buttonText]="
+                            loginMode() === 'ADMIN'
+                                ? 'Login as Admin'
+                                : 'Login as Farmer'
+                        "
+                        [loadingText]="
+                            loginMode() === 'ADMIN'
+                                ? 'Logging in admin...'
+                                : 'Logging in farmer...'
+                        "
+                        [loading]="loading()"
+                    />
+                </div>
+            </form>
+
+            <!-- toggle button -->
+            <div class="w-full sm:w-1/2">
+                <med-button
+                    [buttonText]="
+                        loginMode() === 'ADMIN'
+                            ? 'Switch to Farmer Login'
+                            : 'Switch to Admin Login'
+                    "
+                    (buttonClick)="toggleMode()"
+                />
+            </div>
+
+            <!-- signup -->
+            <div class="w-full sm:w-1/2">
+                <med-button
+                    buttonText="Create an account"
+                    (buttonClick)="handleSignUp()"
+                />
+            </div>
+        </div>
+    </div>
+
+    <!-- image section -->
+    <div class="w-full rounded-2xl p-4 sm:h-screen sm:w-3/4">
+        <div
+            class="from-brand-accent-light/25 to-brand-primary-light/30 h-full rounded-2xl bg-gradient-to-br p-4"
+        >
+            <div class="flex h-full items-center justify-center">
+                <img src="file-system.svg" alt="" />
+            </div>
+        </div>
+    </div>
+</div>

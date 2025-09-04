@@ -15,3 +15,12 @@
         </div>
     </div>
 </section>
+
+<section>
+    <div class="h-screen overflow-y-auto rounded-md">
+        <staff-table
+            [tableTitles]="farmersTableTitles"
+            [tableData]="filteredFarmers()"
+        />
+    </div>
+</section>
