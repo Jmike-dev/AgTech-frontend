@@ -15,6 +15,7 @@ import {
     TableColumn,
 } from '@components/staff-table/staff-table.component';
 import { toast } from 'ngx-sonner';
+import { SafeStorageService } from '@services/safe-storage.service';
 
 Chart.register(...registerables);
 
@@ -28,7 +29,10 @@ export class FarmerCropsComponent implements OnInit {
     @ViewChild('cropsCanvas', { static: true }) cropsCanvas!: ElementRef;
     cropsStore = inject(CropsStore);
 
-    constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+    constructor(
+        @Inject(PLATFORM_ID) private platformId: Object,
+        private storage: SafeStorageService,
+    ) {}
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
@@ -78,7 +82,7 @@ export class FarmerCropsComponent implements OnInit {
         });
     }
     async cropsPageInit() {
-        const farmerId = sessionStorage.getItem('farmerId');
+        const farmerId = this.storage.getItem('farmerId');
         if (!farmerId) {
             toast.error('No admin ID found in session. Please log in again.');
             return;
