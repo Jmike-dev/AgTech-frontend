@@ -1,0 +1,60 @@
+@use "@angular/material" as mat;
+
+$color-brand-text-light: #03210e;
+$color-brand-background-light: #f6fef9;
+$color-brand-primary-light: #2ced83;
+$color-brand-secondary-light: #f486d1;
+$color-brand-accent-light: #ef7c43;
+:root {
+    @include mat.form-field-overrides(
+        (
+            outlined-container-shape: 8px,
+            outlined-outline-width: 2px,
+            outlined-focus-outline-color: $color-brand-accent-light,
+            outlined-outline-color: $color-brand-primary-light,
+            outlined-hover-outline-color: $color-brand-accent-light,
+            container-height: 50px,
+        )
+    );
+    @include mat.progress-bar-overrides(
+        (
+            active-indicator-color: $color-brand-primary-light,
+            track-color: $color-brand-accent-light,
+        )
+    );
+    @include mat.datepicker-overrides(
+        (
+            calendar-body-label-text-color: $color-brand-text-light,
+            calendar-container-background-color: $color-brand-background-light,
+            calendar-container-text-color: $color-brand-text-light,
+            calendar-container-shape: 8px,
+            toggle-icon-color: $color-brand-accent-light,
+            toggle-active-state-icon-color: $color-brand-accent-light,
+            calendar-header-text-size: 20px,
+            calendar-date-selected-state-text-color:
+                $color-brand-background-light,
+            calendar-date-selected-state-background-color:
+                $color-brand-accent-light,
+            calendar-date-today-outline-color: $color-brand-accent-light,
+            calendar-date-today-selected-state-outline-color:
+                $color-brand-background-light,
+            calendar-date-today-disabled-state-outline-color:
+                $color-brand-primary-light,
+        )
+    );
+    @include mat.select-overrides(
+        (
+            panel-background-color: #ffffff,
+            enabled-trigger-text-color: $color-brand-accent-light,
+            enabled-arrow-color: $color-brand-primary-light,
+            focused-arrow-color: $color-brand-accent-light,
+            arrow-transform: 20px,
+        )
+    );
+    @include mat.autocomplete-overrides(
+        (
+            background-color: #ffffff,
+            container-shape: 8px,
+        )
+    );
+}
