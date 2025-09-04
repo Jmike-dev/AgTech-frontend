@@ -5,7 +5,6 @@ Chart.register(...registerables);
 
 @Component({
     selector: 'app-farmers',
-    standalone: true,
     templateUrl: './farmers.component.html',
 })
 export class FarmersComponent implements OnInit {
