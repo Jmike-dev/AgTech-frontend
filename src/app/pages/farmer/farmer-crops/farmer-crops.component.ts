@@ -5,21 +5,34 @@ import {
     ElementRef,
     Inject,
     PLATFORM_ID,
+    inject,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
+import { CropsStore } from '@store/crops.store';
+import {
+    StaffTableComponent,
+    TableColumn,
+} from '@components/staff-table/staff-table.component';
+import { toast } from 'ngx-sonner';
+import { SafeStorageService } from '@services/safe-storage.service';
 
 Chart.register(...registerables);
 
 @Component({
     selector: 'app-farmer-crops',
     templateUrl: './farmer-crops.component.html',
+    imports: [StaffTableComponent],
 })
 export class FarmerCropsComponent implements OnInit {
     @ViewChild('usageCanvas', { static: true }) usageCanvas!: ElementRef;
     @ViewChild('cropsCanvas', { static: true }) cropsCanvas!: ElementRef;
+    cropsStore = inject(CropsStore);
 
-    constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+    constructor(
+        @Inject(PLATFORM_ID) private platformId: Object,
+        private storage: SafeStorageService,
+    ) {}
 
     ngOnInit(): void {
         if (isPlatformBrowser(this.platformId)) {
@@ -68,4 +81,36 @@ export class FarmerCropsComponent implements OnInit {
             },
         });
     }
+    async cropsPageInit() {
+        const farmerId = this.storage.getItem('farmerId');
+        if (!farmerId) {
+            toast.error('No admin ID found in session. Please log in again.');
+            return;
+        }
+        try {
+            await this.cropsStore.fetchCrops(farmerId);
+
+            const cropsError = this.cropsStore.error();
+
+            if (cropsError) {
+                toast.error(`Crops Error: ${cropsError}`);
+            }
+        } catch (err: any) {
+            toast.error(
+                `Unexpected Error: ${err.message || 'Something went wrong.'}`,
+            );
+        }
+    }
+    cropsTableTitles: TableColumn[] = [
+        {
+            key: 'name',
+            label: 'Name',
+            render: (row: any) => row.name,
+        },
+        {
+            key: 'number',
+            label: 'number of Items in stock',
+            render: (row: any) => row.number,
+        },
+    ];
 }

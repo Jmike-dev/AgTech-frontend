@@ -1,10 +1,12 @@
 {
-  "hosting": {
-    "public": "dist/ag-tech-frontend/browser",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ]
-  }
+    "hosting": {
+        "public": "dist/ag-tech-frontend/browser",
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+        "rewrites": [
+            {
+                "source": "**",
+                "destination": "/index.csr.html"
+            }
+        ]
+    }
 }
