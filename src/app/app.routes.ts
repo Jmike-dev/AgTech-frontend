@@ -6,41 +6,50 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
     {
-        path: 'admin',
+        path: 'dashboard',
         loadComponent: () =>
-            import('@pages/admin/admin.component').then(
-                (c) => c.AdminComponent,
+            import('@pages/dashboard/dashboard.component').then(
+                (c) => c.DashboardComponent,
             ),
         children: [
             {
-                path: 'farmers',
+                path: 'admin',
                 loadComponent: () =>
-                    import('@pages/farmers/farmers.component').then(
-                        (c) => c.FarmersComponent,
+                    import('@pages/admin/admin.component').then(
+                        (c) => c.AdminComponent,
                     ),
+                children: [
+                    {
+                        path: 'farmers',
+                        loadComponent: () =>
+                            import('@pages/farmers/farmers.component').then(
+                                (c) => c.FarmersComponent,
+                            ),
+                    },
+                    {
+                        path: 'crops',
+                        loadComponent: () =>
+                            import('@pages/crops/crops.component').then(
+                                (c) => c.CropsComponent,
+                            ),
+                    },
+                ],
             },
             {
-                path: 'crops',
+                path: 'farmer',
                 loadComponent: () =>
-                    import('@pages/crops/crops.component').then(
-                        (c) => c.CropsComponent,
+                    import('@pages/farmer/farmer.component').then(
+                        (c) => c.FarmerComponent,
                     ),
-            },
-        ],
-    },
-    {
-        path: 'farmer',
-        loadComponent: () =>
-            import('@pages/farmer/farmer.component').then(
-                (c) => c.FarmerComponent,
-            ),
-        children: [
-            {
-                path: 'farmer crops',
-                loadComponent: () =>
-                    import(
-                        '@pages/farmer/farmer-crops/farmer-crops.component'
-                    ).then((c) => c.FarmerCropsComponent),
+                children: [
+                    {
+                        path: 'farmer-crops',
+                        loadComponent: () =>
+                            import(
+                                '@pages/farmer/farmer-crops/farmer-crops.component'
+                            ).then((c) => c.FarmerCropsComponent),
+                    },
+                ],
             },
         ],
     },
