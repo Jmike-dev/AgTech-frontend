@@ -19,6 +19,7 @@ export const routes: Routes = [
                         (c) => c.AdminComponent,
                     ),
                 children: [
+                    { path: '', redirectTo: 'farmers', pathMatch: 'full' },
                     {
                         path: 'farmers',
                         loadComponent: () =>
@@ -42,6 +43,7 @@ export const routes: Routes = [
                         (c) => c.FarmerComponent,
                     ),
                 children: [
+                    { path: '', redirectTo: 'farmer-crops', pathMatch: 'full' },
                     {
                         path: 'farmer-crops',
                         loadComponent: () =>
