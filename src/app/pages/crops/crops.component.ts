@@ -105,8 +105,8 @@ export class CropsComponent implements OnInit {
             render: (row: any) => row.name,
         },
         {
-            key: 'email',
-            label: 'email',
+            key: 'number',
+            label: 'number of Items in stock',
             render: (row: any) => row.number,
         },
     ];
