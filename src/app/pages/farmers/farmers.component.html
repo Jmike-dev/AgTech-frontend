@@ -1,1 +1,17 @@
-<p>farmers works!</p>
+<section class="grid gap-6 p-6 md:grid-cols-2">
+    <!-- Gender Distribution Card -->
+    <div class="flex flex-col items-center rounded-2xl bg-white p-4 shadow-md">
+        <h2 class="mb-4 text-lg font-semibold">Gender Distribution</h2>
+        <div class="h-64 w-full">
+            <canvas #genderCanvas></canvas>
+        </div>
+    </div>
+
+    <!-- Crops Distribution Card -->
+    <div class="flex flex-col items-center rounded-2xl bg-white p-4 shadow-md">
+        <h2 class="mb-4 text-lg font-semibold">Crops Distribution</h2>
+        <div class="h-64 w-full">
+            <canvas #cropsCanvas></canvas>
+        </div>
+    </div>
+</section>

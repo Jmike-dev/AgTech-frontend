@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-farmer',
-  imports: [],
-  templateUrl: './farmer.component.html'
+    selector: 'app-farmer',
+    imports: [RouterOutlet],
+    templateUrl: './farmer.component.html',
 })
-export class FarmerComponent {
-
-}
+export class FarmerComponent {}

@@ -1,6 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+
+@theme {
+    --color-brand-text-light: #03210e;
+    --color-brand-background-light: #f6fef9;
+    --color-brand-primary-light: #2ced83;
+    --color-brand-secondary-light: #f486d1;
+    --color-brand-accent-light: #ef7c43;
+    --font-roboto-flex: "Roboto Flex", san-serif;
+}
+
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
