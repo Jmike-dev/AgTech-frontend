@@ -1,4 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef,
+    Inject,
+    PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
@@ -11,9 +19,12 @@ export class FarmersComponent implements OnInit {
     @ViewChild('genderCanvas', { static: true }) genderCanvas!: ElementRef;
     @ViewChild('cropsCanvas', { static: true }) cropsCanvas!: ElementRef;
 
+    constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
     ngOnInit(): void {
-        this.renderGenderChart();
-        this.renderCropsChart();
+        if (isPlatformBrowser(this.platformId)) {
+            this.renderGenderChart();
+            this.renderCropsChart();
+        }
     }
 
     private renderGenderChart() {
@@ -24,8 +35,8 @@ export class FarmersComponent implements OnInit {
                 datasets: [
                     {
                         label: 'Gender Distribution',
-                        data: [60, 40], // dummy data
-                        backgroundColor: ['#3B82F6', '#F472B6'], // blue & pink
+                        data: [60, 40],
+                        backgroundColor: ['#3B82F6', '#F472B6'],
                     },
                 ],
             },
@@ -40,7 +51,7 @@ export class FarmersComponent implements OnInit {
                 datasets: [
                     {
                         label: 'Number of Crops',
-                        data: [120, 90, 50, 70], // dummy data
+                        data: [120, 90, 50, 70],
                         backgroundColor: '#22C55E',
                     },
                 ],

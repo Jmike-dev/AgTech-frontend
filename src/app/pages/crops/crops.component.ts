@@ -1,20 +1,31 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {
+    Component,
+    OnInit,
+    ViewChild,
+    ElementRef,
+    Inject,
+    PLATFORM_ID,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
 
 @Component({
     selector: 'app-crops',
-    standalone: true,
     templateUrl: './crops.component.html',
 })
 export class CropsComponent implements OnInit {
     @ViewChild('usageCanvas', { static: true }) usageCanvas!: ElementRef;
     @ViewChild('cropsCanvas', { static: true }) cropsCanvas!: ElementRef;
 
+    constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
     ngOnInit(): void {
-        this.renderUsageChart();
-        this.renderCropsChart();
+        if (isPlatformBrowser(this.platformId)) {
+            this.renderUsageChart();
+            this.renderCropsChart();
+        }
     }
 
     private renderUsageChart() {
