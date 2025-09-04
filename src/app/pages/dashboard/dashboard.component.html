@@ -5,15 +5,22 @@
         <section
             class="border-brand-text-light/5 shadow-brand-text-light/20 relative flex h-full min-w-48 flex-col justify-between border-2 bg-white p-4 shadow"
         >
-            <!-- @if () {} -->
-            <!-- <side-nav [sideBar]="farmerDashboardRoutes" /> -->
-            <side-nav [sideBar]="adminDashboardRoutes" />
+            <!-- show sidebar based on role -->
+            @if (role() === "ADMIN") {
+                <side-nav [sideBar]="adminDashboardRoutes" />
+            } @else if (role() === "FARMER") {
+                <side-nav [sideBar]="farmerDashboardRoutes" />
+            }
+
             <div class="w-full">
-                <!-- <med-button
-                    buttonText="Log Out"
-                    loadingText="logging out"
-                    [loading]="loading()"
-                /> -->
+                <!-- future logout button -->
+                <!--
+        <med-button
+          buttonText="Log Out"
+          loadingText="logging out"
+          [loading]="loading()"
+        />
+        -->
             </div>
         </section>
     </section>
