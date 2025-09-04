@@ -21,7 +21,12 @@ export class CropsService {
     }
     getCrops(farmerId: string) {
         return this.http
-            .get<Crop[]>(`${this.apiUrl}/crops/farmer${farmerId}`)
+            .get<Crop[]>(`${this.apiUrl}/crops/farmer/${farmerId}`)
+            .pipe(tap((crops) => this.cropsListSubject.next(crops)));
+    }
+    allCrops(adminId: string) {
+        return this.http
+            .get<Crop[]>(`${this.apiUrl}/crops/admin/${adminId}`)
             .pipe(tap((crops) => this.cropsListSubject.next(crops)));
     }
 }

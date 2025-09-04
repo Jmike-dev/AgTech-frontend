@@ -89,7 +89,7 @@ export class FarmersComponent implements OnInit {
             const farmersError = this.farmersStore.error();
 
             if (farmersError) {
-                toast.error(`Staff Error: ${farmersError}`);
+                toast.error(`Farmers Error: ${farmersError}`);
             }
         } catch (err: any) {
             toast.error(
@@ -97,7 +97,7 @@ export class FarmersComponent implements OnInit {
             );
         }
     }
-    staffTableTitles: TableColumn[] = [
+    farmersTableTitles: TableColumn[] = [
         // {
         //     key: 'role',
         //     label: 'Role',
